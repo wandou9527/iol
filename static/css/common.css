@@ -1,0 +1,75 @@
+body, ul, p, h2, h3, h4, h5, h6, ol, dl, dd, input, form {
+    /*初始化清除内外边距*/
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+body {
+    /*设置字体样式：长12像素 宽是长的1.5倍，字体英文是arial 中文是微软雅黑，背景颜色是灰色。*/
+    font: 14px arial, 'microsoft yahei';
+    background: #eee;
+    color: #050505;
+}
+.f12 {
+    font-size: 12px;
+}
+.f16 {
+    font-size: 16px;
+}
+.f18 {
+    font-size: 18px;
+}
+.f20 {
+    font-size: 20px;
+}
+    /*提前设置好文字样式，需要时候直接调用，减少冗余代码*/
+li {
+    /*清除列表符号（编号）*/
+    list-style: none;
+}
+a {
+    /*清除a标签所有下划线*/
+    color: #050505;
+    text-decoration: none;
+}
+a:hover, .blue {
+    color:#00b4ff;
+}
+/*鼠标悬停时候a标签的颜色和蓝色字体，需要的时候都可以直接调用
+*/img {
+    /*清除ie6图片默认边框*/
+    border: 0 none;
+   /* 清除图片底部默认缝隙*/
+    vertical-align: middle;
+}
+input textarea {
+   /* 清除默认轮廓线*/
+    outline: none;
+    border: 0 none;
+}
+.w {
+    /*设置版心*/
+    width: 1210px;
+    margin: 0 auto;
+}
+.fl {
+    /*设置左浮动*/
+    float: left;
+}
+.fr {
+     /*设置右浮动*/
+    float: right;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom:1;
+}
+/*双伪元素清除浮动*/
