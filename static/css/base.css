@@ -3,10 +3,12 @@
     background: #ffd100;
     line-height: 58px;
 }
+
 .ww {
     width: 1310px;
     margin: 0 auto;
 }
+
 .box1 .fl img {
     float: left;
     margin-top: 16px;
@@ -14,34 +16,41 @@
 
 .box1 .fr span {
     float: left;
-    margin-right: 50px;   
+    margin-right: 50px;
 }
+
 .box2 {
     height: 340px;
     background-color: #ffffff;
 }
+
 .box2 img {
     height: 300px;
     width: 1130px;
     padding: 20px 40px;
 }
+
 .box3 {
     height: 233px;
     background: #ffffff;
     padding-bottom: 43px;
 }
+
 .box3 img {
     height: 170px;
     width: 210px;
     float: left;
     margin-right: 20px;
 }
+
 .box3 .p1 {
     margin-left: 40px;
 }
+
 .box3 .p5 {
     margin-right: 0;
 }
+
 .box4 {
     height: 33px;
     line-height: 33px;
@@ -50,26 +59,32 @@
     padding-bottom: 17px;
     font-size: 20px;
 }
+
 .box4 span {
     padding-right: 50px;
 }
+
 .box5 {
     height: 700px;
     background: #f4f4f4;
     padding-bottom: 80px;
 }
- .box5 ul {
+
+.box5 ul {
     float: left;
- }
+}
+
 .box5 ul li {
     float: left;
     width: 210px;
     height: 310px;
     background: #ffffff;
 }
+
 .box5 ul li .p6 {
     width: 210px;
 }
+
 .box5 .fl div .p7 {
     display: inline-block;
     width: 25px;
@@ -77,36 +92,41 @@
     border-radius: 50%;
 }
 
-
 .box5 .fl ul {
     width: 1130px;
-   float: right;
-   margin-bottom: 50px;
+    float: right;
+    margin-bottom: 50px;
 }
+
 .box6 {
     height: 105px;
     background: #f4f4f4;
     margin-left: 40px;
 }
+
 .box6 img {
-   width: 1130;
-   height: 104px;
+    width: 1130;
+    height: 104px;
 }
+
 .box7 {
     height: 300px;
     background: #f4f4f4;
 }
+
 .box7 ul {
     float: left;
     margin-left: 40px;
     margin-bottom: 40px;
 }
+
 .box7 li {
     float: left;
     width: 200px;
     height: 214px;
     background: #ffffff;
 }
+
 .box7 h3 {
     height: 50px;
     line-height: 50px;
