@@ -282,53 +282,26 @@ private Integer roleId;
 
 ```
 
-##### 2.2.7 @KeySql 注解
 
-```
-主键策略注解，用于配置如何生成主键。
-
-这是通用 Mapper 的自定义注解，改注解的目的就是替换 @GeneratedValue 注解。
-
-关于该注解的用法可以查看 2.3 主键策略。
-
-```
-
-
-##### 2.2.8 @GeneratedValue 注解（JPA）
+##### 2.2.7 @GeneratedValue 注解（JPA）
 
 ```
 
 主键策略注解，用于配置如何生成主键。
+如下配置是实现自增主键，并支持主键返回。
 
-由于不同类型数据库的配置不同，所以后面有一节专门介绍该注解的文档。
+@Id
+@GeneratedValue(generator = "JDBC")
+private Long id;
 
-关于该注解的用法可以查看 2.3 主键策略。
-
-推荐使用上面的 @KeySql 注解。
 
 ```
 
-##### 2.2.9 @Version 注解（Mapper）
+##### 2.2.8 @Version 注解（Mapper）
 
 ```
 @Version 是实现乐观锁的一个注解，大多数人都不需要。
 
-需要使用该注解的请看 2.4 乐观锁。
-
-```
-
-##### 2.2.10 @RegisterMapper 注解
-
-```
-为了解决通用 Mapper 中最常见的一个错误而增加的标记注解，该注解仅用于开发的通用接口，不是实体类上使用的，这里和其他注解一起介绍了。
-
-4.0 版本提供的所有通用接口上都标记了该注解，因此自带的通用接口时，不需要配置 mappers 参数，该注解的具体用法会在 第五章 扩展通用接口 中介绍。
-
-```
-
-#### 2.4 乐观锁
-
-```
 乐观锁实现中，要求一个实体类中只能有一个乐观锁字段。
 
 配置 @Version
@@ -337,6 +310,16 @@ private Integer roleId;
 如想自己扩展实现，参考：https://github.com/abel533/Mapper/wiki/2.4-version
 
 ```
+
+##### 2.2.9 @RegisterMapper 注解
+
+```
+为了解决通用 Mapper 中最常见的一个错误而增加的标记注解，该注解仅用于开发的通用接口，不是实体类上使用的，这里和其他注解一起介绍了。
+
+4.0 版本提供的所有通用接口上都标记了该注解，因此自带的通用接口时，不需要配置 mappers 参数，该注解的具体用法会在 第五章 扩展通用接口 中介绍。
+
+```
+
 
 ### 3 Example 用法
 
@@ -374,7 +357,39 @@ List<User> users1 = userMapper.selectByExample(userExample1);
 
 ##### 3.2.1 查询
 
+示例：
 
+```
+Example example = new Example(User.class);
+example.createCriteria().andGreaterThan("id", 5L).andLessThan("id", 11L);
+example.or().andLessThan("id", 2L);
+example.or().andEqualTo("realName", "摘星子").andEqualTo("username", "1120");
+//todo 可以理解为每个 example.createCriteria() 就是在sql中生成个括号（）
+
+sql：
+
+==>  Preparing: SELECT id,username,password,real_name,phone,wechat,sex,update_time FROM user WHERE ( id > ? and id < ? ) or ( id < ? ) or ( real_name = ? and username = ? ) 
+==> Parameters: 5(Long), 11(Long), 2(Long), 摘星子(String), 1120(String)
+<==      Total: 7
+
+```
+
+##### 3.2.2 排序
+
+示例：
+
+```
+Example example = new Example(User.class);
+example.orderBy("realName").orderBy("phone").desc().orderBy("id").asc();
+List<User> users = userMapper.selectByExample(example);
+
+sql：
+
+==>  Preparing: SELECT id,username,password,real_name,phone,wechat,sex,update_time FROM user order by real_name,phone DESC,id AS
+==> Parameters: 
+<==      Total: 20
+
+```
 
 
 
