@@ -1,5 +1,5 @@
 ## tk-mybatis 简介
-tk-mybatis即通用mapper，使用它可以减少sql开发量，接口提供了丰富的crud方法，及Example相关的单表操作，简单调用即可。
+tk-mybatis即通用mapper，使用它可以减少sql开发量，接口提供了丰富的crud方法，及Example相关的单表操作，简单调用即可。操作目前仅限单表。
 
 ## 正确的打开姿势
 
@@ -25,15 +25,16 @@ Java 编码方式集成是最少见的一种情况，但是通过这种集成方
 此例版本关系：
 mapper-spring-boot-starter 1.1.7 
 springboot 1.5.2
-此版本 springboot 集成 1.2.x 的 mapper-starter 运行会报错
+此版本 springboot 集成 1.2.x 的 mapper-spring-boot-starter 运行会报错
 
 ```
 
 - 在 properties 配置中：
 
 ```
-mapper.mappers=tk.mybatis.mapper.common.Mapper,tk.mybatis.mapper.common.Mapper2
-mapper.notEmpty=false
+mapper.mappers=tk.mybatis.mapper.common.Mapper
+# Selective式的增改操作是否判断空字符串情况。
+mapper.notEmpty=true 
 
 ```
 
@@ -127,7 +128,7 @@ public interface UserMapper extends Mapper<User> {
 - selectByPrimaryKey
 - 方法太多，省略其他...
 
-从 MyBatis 中获取该接口后就可以直接使用：
+该接口可以直接使用：
 
 ```
 //从 MyBatis 或者 Spring 中获取 countryMapper，然后调用 selectAll 方法
@@ -391,6 +392,9 @@ sql：
 
 ```
 
+
+## 注意事项
+- 【删除慎用】通用mapper的删除方法为物理删除
 
 
 
